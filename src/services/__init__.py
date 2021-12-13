@@ -1,0 +1,2 @@
+from .module_service import ModuleServiceViewSet
+from .lesson_service import LessonServiceViewSet
