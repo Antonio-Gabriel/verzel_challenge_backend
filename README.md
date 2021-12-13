@@ -9,10 +9,10 @@ Recursos disponíveis para acesso via API ou endpoints(URI):
 * **lessons** - /api/v1/recursos/lessons
 * **users** - /api/v1/recursos/users
 
-| Método         | Descrição                    |
-| -------------- | ---------------------------- |
-| `GET | POST`   | `/api/v1/modules/`           |
-| `PUT | DELETE` | `/api/v1/recursos/lessons/1` |
+| Método       | Descrição                    |
+| ------------ | ---------------------------- |
+| `GET  POST`  | `/api/v1/modules/`           |
+| `PUT DELETE` | `/api/v1/recursos/lessons/1` |
 
 um exemplo do funcionamento das rotas.
 
