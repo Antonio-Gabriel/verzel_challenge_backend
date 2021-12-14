@@ -22,9 +22,9 @@ class JWTAuthentication(authentication.BaseAuthentication):
             return (user, auth_data.decode().split(" ")[1])
 
         except jwt.DecodeError:
-            raise exceptions.AuthenticationFailed("Your token is invalid, login")
+            raise exceptions.AuthenticationFailed("O token é inválido, login")
 
         except jwt.ExpiredSignatureError:
-            raise exceptions.AuthenticationFailed("Your token is expired, login")
+            raise exceptions.AuthenticationFailed("O Token expirou, login")
 
         return super().authenticate(request)
