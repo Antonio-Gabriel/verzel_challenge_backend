@@ -20,7 +20,11 @@ um exemplo do funcionamento das rotas.
 
 
 
-Para rodar a aplicação execute os seguintes comandos.
+Para rodar a aplicação siga os seguintes passos:
+
+primeiro: crie uma base de dados com o nome `verzel_course_api`
+
+em seguida execute os seguintes comandos.
 
 ```shell
 pip install -r requirements.txt,
@@ -113,5 +117,5 @@ Os recursos funcionais da aplicação são:
 - [x] Criação, remoção, actualização e remoção de módulo
 - [x] Criação, remoção, actualização e remoção de aula
 - [ ] Authenticação de usuário
-- [x] Listagem das aulas em ordem crescente
+- [x] Listagem das aulas em ordem alfabética
 - [x] Validação dos campos antes da inserção
