@@ -2,7 +2,7 @@ from ..models import User, UserSerializer
 from ..helper import generate_access_token
 
 from rest_framework import status
-from rest_framework import authentication, mixins, viewsets
+from rest_framework import mixins, viewsets
 
 # from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny
