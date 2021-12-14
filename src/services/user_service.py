@@ -1,4 +1,4 @@
-from ..models import User, UserSerializer
+from ..models import User as UserAdmin, UserSerializer
 from ..helper import generate_access_token
 
 from rest_framework import status
@@ -13,6 +13,8 @@ from rest_framework.generics import GenericAPIView
 
 from django.contrib.auth.models import User as UserModel
 
+# from django.shortcuts import get_object_or_404
+
 
 class UserServiceViewSet(
     mixins.CreateModelMixin,
@@ -20,7 +22,7 @@ class UserServiceViewSet(
     mixins.ListModelMixin,
     viewsets.GenericViewSet,
 ):
-    queryset = User.objects.all()
+    queryset = UserAdmin.objects.all()
     serializer_class = UserSerializer
 
 
@@ -37,31 +39,40 @@ class UserLoginAPIView(GenericAPIView):
         if not email:
             raise AuthenticationFailed("Email é obrigatório.")
 
-        user_instance = User.objects.get(email=email, password=user_password)
+        try:
 
-        if user_instance:
+            user_instance = UserAdmin.objects.get(email=email, password=user_password)
 
-            serializer = UserSerializer(user_instance)
+            if user_instance:
 
-            user_model = UserModel()
-            user_model.username = serializer.data["username"]
+                serializer = UserSerializer(user_instance)
 
-            user_access_token = generate_access_token(serializer.data["username"])
+                user_model = UserModel()
+                user_model.username = serializer.data["username"]
 
-            response = Response()
-            response.status_code = status.HTTP_200_OK
-            response.set_cookie(
-                key="access_token", value=user_access_token, httponly=True
-            )
+                user_access_token = generate_access_token(serializer.data["username"])
 
-            if not user_model.username:
-                user_model.save()
-            else:
+                response = Response()
+                response.status_code = status.HTTP_200_OK
+                response.set_cookie(
+                    key="access_token", value=user_access_token, httponly=True
+                )
+
+                if not UserModel.objects.filter(
+                    username__exact=serializer.data["username"]
+                ):
+                    user_model.save()
+
+                else:
+                    response.data = {"access_token": user_access_token}
+
                 response.data = {"access_token": user_access_token}
 
-            response.data = {"access_token": user_access_token}
-
             return response
+
+        except UserAdmin.DoesNotExist:
+
+            user_instance = None
 
         return Response(
             {"message": "Algo deu errado!."}, status=status.HTTP_401_UNAUTHORIZED
