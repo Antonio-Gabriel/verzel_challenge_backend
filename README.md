@@ -18,20 +18,41 @@ um exemplo do funcionamento das rotas.
 
 ## Modelagem da base de dados
 
-
+<img src="./verzel_diagram.png"/>
 
 Para rodar a aplicação siga os seguintes passos:
 
 primeiro: crie uma base de dados com o nome `verzel_course_api`
 
-em seguida execute os seguintes comandos.
+actualize as configurações da base de dados, colocando o `user`, `password`, `host`
+
+```python
+DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'verzel_course_api',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '3306'
+    }
+}
+```
+Comandos
 
 ```shell
 pip install -r requirements.txt,
 python manage.py makemigrations,
 python manage.py migrate
-python3 manage.py runserver 0.0.0.0:7000
+python manage.py runserver
 ```
+
+ou podes não executar o migrate e carregar o arquivo já com dados na tua base de dados
+
 
 ## Métodos
 Requisições para a API devem seguir os padrões:
