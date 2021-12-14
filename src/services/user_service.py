@@ -32,10 +32,10 @@ class UserLoginAPIView(GenericAPIView):
         user_password = request.data.get("password", None)
 
         if not user_password:
-            raise AuthenticationFailed("A user password is needed.")
+            raise AuthenticationFailed("Palavra passe é obrigatório.")
 
         if not email:
-            raise AuthenticationFailed("An user email is needed.")
+            raise AuthenticationFailed("Email é obrigatório.")
 
         user_instance = User.objects.get(email=email, password=user_password)
 
@@ -64,5 +64,5 @@ class UserLoginAPIView(GenericAPIView):
             return response
 
         return Response(
-            {"message": "Something went wrong."}, status=status.HTTP_401_UNAUTHORIZED
+            {"message": "Algo deu errado!."}, status=status.HTTP_401_UNAUTHORIZED
         )
