@@ -16,9 +16,14 @@ class JWTAuthentication(authentication.BaseAuthentication):
         try:
             payload = jwt.decode(
                 auth_data.decode().split(" ")[1], "secret_key", algorithms="HS256"
-            )
-            user = UserModel.objects.get(username=payload["username"])
+            )   
 
+            try:
+                user = UserModel.objects.get(username__exact=payload["username"])
+                
+            except UserModel.DoesNotExist:
+                user = None
+            
             return (user, auth_data.decode().split(" ")[1])
 
         except jwt.DecodeError:
