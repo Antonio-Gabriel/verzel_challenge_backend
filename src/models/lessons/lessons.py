@@ -4,7 +4,7 @@ from ..module.module import Module
 
 
 class Lesson(models.Model):
-    name = models.CharField(max_length=100, null=False, blank=False)
+    name = models.CharField(max_length=100, null=False, blank=False, unique=True)
     module = models.ForeignKey(Module, related_name="lessons", on_delete=models.CASCADE)
     start_date = models.DateField()
 
