@@ -116,6 +116,6 @@ Os recursos funcionais da aplicação são:
 - [x] Criação, remoção e actualização de usuário
 - [x] Criação, remoção, actualização e remoção de módulo
 - [x] Criação, remoção, actualização e remoção de aula
-- [ ] Authenticação de usuário
+- [x] Authenticação de usuário
 - [x] Listagem das aulas em ordem alfabética
 - [x] Validação dos campos antes da inserção
