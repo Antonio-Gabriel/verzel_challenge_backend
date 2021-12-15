@@ -118,17 +118,20 @@ Caso a requisição não conter nenhuma resposta o retorno será:
 
 + Response 200 (application/json)
 
-        {
-            "id": 1,
-            "name": "Desenvolvimento FrontEnd Master",
-            "lessons": [
-                "http://127.0.0.1:8000/api/v1/lessons/5/",
-                "http://127.0.0.1:8000/api/v1/lessons/1/",
-                "http://127.0.0.1:8000/api/v1/lessons/2/",
-                "http://127.0.0.1:8000/api/v1/lessons/3/",
-                "http://127.0.0.1:8000/api/v1/lessons/4/"
-            ]
-        }
+        [
+            {
+                "id": 1,
+                "name": "Containerização com Docker",
+                "lessons": [
+                    {
+                        "id": 1,
+                        "name": "Introdução ao curso",
+                        "start_date": "2022-02-12",
+                        "module": 1
+                    }
+                ]
+            }
+        ]
 
 
 
