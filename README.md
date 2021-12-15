@@ -4,6 +4,8 @@ Este foi o test ou desafio que me foi proposto pela empresa Verzel a fim de test
 
 A aplicação desenvolvida tem a finalidade de registrar módulos de cursos e as aulas que fazem parte do mesmo.
 
+Aproveito informar que para o código, as base de dados trabalhei na lingua inglêsa com exceção das mensagens que retorna.
+
 Recursos disponíveis para acesso via API ou endpoints(URI):
 * **modules** - /api/v1/modules/
 * **lessons** - /api/v1/recursos/lessons
