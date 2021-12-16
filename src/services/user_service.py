@@ -13,8 +13,6 @@ from rest_framework.generics import GenericAPIView
 
 from django.contrib.auth.models import User as UserModel
 
-# from django.shortcuts import get_object_or_404
-
 
 class UserServiceViewSet(
     mixins.CreateModelMixin,
