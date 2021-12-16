@@ -58,15 +58,26 @@ class UserLoginAPIView(GenericAPIView):
                     key="access_token", value=user_access_token, httponly=True
                 )
 
+                user_data = serializer.data
+
+                del user_data["created_at"]
+                del user_data["updated_at"]
+
                 if not UserModel.objects.filter(
                     username__exact=serializer.data["username"]
                 ):
                     user_model.save()
 
                 else:
-                    response.data = {"access_token": user_access_token}
+                    response.data = {
+                        "access_token": user_access_token,
+                        "user": user_data,
+                    }
 
-                response.data = {"access_token": user_access_token}
+                response.data = {
+                    "access_token": user_access_token,
+                    "user": user_data,
+                }
 
             return response
 
