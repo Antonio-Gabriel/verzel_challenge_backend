@@ -16,6 +16,7 @@ from django.contrib.auth.models import User as UserModel
 
 class UserServiceViewSet(
     mixins.CreateModelMixin,
+    mixins.DestroyModelMixin,
     mixins.UpdateModelMixin,
     mixins.ListModelMixin,
     viewsets.GenericViewSet,
